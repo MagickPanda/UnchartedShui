@@ -26,20 +26,35 @@ CONFIG += c++17
 
 SOURCES += \
         main.cpp \
+        mainmenu.cpp \
         mainwindow.cpp \
-        openglwidget.cpp
+        openglwidget.cpp \
+        uslogger.cpp
 
 HEADERS += \
+        mainmenu.h \
         mainwindow.h \
-        openglwidget.h
+        openglwidget.h \
+        uslogger.h
 
 FORMS += \
         mainwindow.ui
+
+log4qt_inc = G:/dev_package/unchartedshui/x86/log4qt/include/
+log4qt_lib = G:/dev_package/unchartedshui/x86/log4qt/lib/
+
+DEPENDPATH += $$log4qt_lib
+INCLUDEPATH += $$log4qt_inc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+#log4qt_inc =G:\dev_package\unchartedshui\x86\log4qt\include
+
+LIBS += -L$$log4qt_lib -llog4qt_d
+
 win32: LIBS += -lOpenGL32
 win32: LIBS += -lGlU32
+
