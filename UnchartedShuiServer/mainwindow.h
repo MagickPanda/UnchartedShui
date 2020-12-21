@@ -2,17 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTcpServer>
-#include <QTcpSocket>
 #include <QSqlDatabase>
 #include <QMessageBox>
+
+#include "ussocketserver.h"
+
+using namespace qtng;
 
 class NetworkMod
 {
 public:
     void readMessage(void);
-    void sendMessage(QString msg, QTcpSocket *socket);
-    void processMessage(QString msg,QTcpSocket *socket);
+    void sendMessage(QString msg, Socket *socket);
+    void processMessage(QString msg, Socket *socket);
 };
 
 namespace Ui {
