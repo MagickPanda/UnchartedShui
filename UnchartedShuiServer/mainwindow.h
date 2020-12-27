@@ -32,8 +32,7 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    QTcpServer *tcpServer;
-    QTcpSocket *tcpSocket;
+    UsSocketServer *socketServer;
 };
 
 #endif // MAINWINDOW_H

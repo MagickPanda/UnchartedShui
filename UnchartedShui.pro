@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++17
+CONFIG += console
 
 SOURCES += \
         main.cpp \
@@ -40,11 +41,20 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
+inc_path = G:/dev_package/unchartedshui/x86/include
+lib_path = G:/dev_package/unchartedshui/x86/lib-debug
+
 log4qt_inc = G:/dev_package/unchartedshui/x86/log4qt/include/
 log4qt_lib = G:/dev_package/unchartedshui/x86/log4qt/lib/
 
 DEPENDPATH += $$log4qt_lib
 INCLUDEPATH += $$log4qt_inc
+
+DEPENDPATH += $$lib_path
+INCLUDEPATH += $$inc_path
+
+LIBS += -L$$log4qt_lib -llog4qt_d
+LIBS += -L$$lib_path -lqtnetworkng_d
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

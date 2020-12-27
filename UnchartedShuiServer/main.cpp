@@ -1,10 +1,6 @@
 ﻿#include "mainwindow.h"
 #include <QApplication>
-
-void handler(const std::error_code &ec)
-{
-  std::cout << "5 s." << std::endl;
-}
+#include "uslogger.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,10 +8,19 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    boost::asio::io_service io_service;
-    boost::asio::deadline_timer timer(io_service, boost::posix_time::seconds(5));
-    timer.async_wait(handler);
-    io_service.run();
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
-    return a.exec();
+    UsLogger &logger = UsLogger::getSingleton();
+
+    //Log4Qt::PropertyConfigurator::configure(a.applicationDirPath() + "/log4qt.conf");
+    logger.init();
+
+
+    USLOG("meow!!\n");
+
+    UsSocketServer server;
+
+    server.start();
+
+    return startQtLoop();
 }
