@@ -35,6 +35,8 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
         uslogger.h \
+        usnetwork.h \
+        usplatform.h \
         ussocketserver.h \
         ustcpserver.h
 

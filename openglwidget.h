@@ -6,6 +6,12 @@
 #include <QOpenGLFunctions>
 #include <QPushButton>
 
+#include "usplatform.h"
+#include "usnetwork.h"
+#include "uslogger.h"
+
+using namespace qtng;
+
 class OpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
 public:
@@ -23,6 +29,21 @@ public:
         btn->setPalette(palette);
 
         btn->setParent(this);
+
+        connect(btn, &QPushButton::clicked,
+                [btn]()
+        {
+            QString remoteHost = QStringLiteral("127.0.0.1");
+
+            Socket s(Socket::IPv4Protocol, Socket::TcpSocket);
+            bool ok = s.connect(remoteHost, US_PORT);
+
+            QString msg;\
+
+            msg.append("connecting to ").append(remoteHost).append(US_PORT).append("\n");
+
+            USLOG_QS(msg);
+        });
     }
 
     void setScreenW(qint32 w)

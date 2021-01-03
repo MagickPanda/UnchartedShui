@@ -22,5 +22,5 @@ int main(int argc, char *argv[])
 
     server.start();
 
-    return startQtLoop();
+    return a.exec();
 }

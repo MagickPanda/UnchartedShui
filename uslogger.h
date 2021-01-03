@@ -16,6 +16,8 @@
 #include <QTextCodec>
 #include <QTime>
 
+/// a logging macro to logging into both console and log4qt log file(QString version)
+#define USLOG_QS(t) { qDebug(t.toStdString().c_str()); std::cout << t.toStdString().c_str(); }
 /// a logging macro to logging into both console and log4qt log file
 #define USLOG(t) { qDebug(t); std::cout << t; }
 
