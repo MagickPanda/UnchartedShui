@@ -30,12 +30,14 @@ SOURCES += \
         mainmenu.cpp \
         mainwindow.cpp \
         openglwidget.cpp \
+        usclientinterface.cpp \
         uslogger.cpp
 
 HEADERS += \
         mainmenu.h \
         mainwindow.h \
         openglwidget.h \
+        usclientinterface.h \
         uslogger.h \
         usnetwork.h \
         usplatform.h

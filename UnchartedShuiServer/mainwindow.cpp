@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -11,4 +11,17 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::serverStart()
+{
+    USLOG("server starting...\n");
+    serverRun();
+}
+void MainWindow::serverRun()
+{
+    while (true)
+    {
+
+    }
 }

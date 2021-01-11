@@ -21,13 +21,24 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, private NetworkMod
+class MainWindow : public QMainWindow, UsSocketServer
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    ///server initialization
+    void serverStart();
+    ///server logic loop
+    void serverRun();
+    ///On new connection callback function
+    void serverNewConnection();
+    ///Function to send message to a single socket client
+    void sendMsgToClient(QString msg, QTcpSocket *target);
+    ///Broadcast message to all connected clients
+    void broadcastMsg(QString msg);
 
 private:
     Ui::MainWindow *ui;

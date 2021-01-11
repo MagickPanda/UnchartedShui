@@ -5,6 +5,34 @@
 #include "uslogger.h"
 #include "usnetwork.h"
 
+static const qint32 US_MAX_CLIENTS = 32;
+
+class UsSocketServer : public QObject
+{
+public:
+    UsSocketServer();
+
+
+
+    virtual void serverStart();
+    virtual void serverRun();
+
+    virtual void newConnection();
+
+    virtual void sendMsgToClient(QString msg,QTcpSocket *target);
+    virtual void broadcastMsg(QString msg);
+public:
+    QSharedPointer<QTcpSocket> mClientSockets[US_MAX_CLIENTS];
+private:
+    bool bClientInUse[US_MAX_CLIENTS];
+
+    QSharedPointer<QTcpSocket> mTcpSocket;
+    QSharedPointer<QTcpServer> mTcpServer;
+
+    friend class MainWindow;
+};
+
+#ifdef US_NETWORK_NG
 using namespace qtng;
 
 class UsSocketServer : public QObject
@@ -38,5 +66,6 @@ private:
     CoroutineGroup mOperations;
 
 };
+#endif
 
 #endif // USSOCKETSERVER_H

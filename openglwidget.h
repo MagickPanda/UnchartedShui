@@ -30,6 +30,7 @@ public:
 
         btn->setParent(this);
 
+#ifdef US_NETWORK_NG
         connect(btn, &QPushButton::clicked,
                 [btn]()
         {
@@ -44,6 +45,8 @@ public:
 
             USLOG_QS(msg);
         });
+#endif
+
     }
 
     void setScreenW(qint32 w)
